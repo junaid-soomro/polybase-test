@@ -9,18 +9,18 @@ import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Polybase } from "@polybase/client";
 
-const db = new Polybase({
-  baseURL: "https://testnet.polybase.xyz",
-});
+// const db = new Polybase({
+//   baseURL: "https://testnet.polybase.xyz",
+// });
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login db={db} />,
+    element: <Login />,
   },
   {
     path: "/Signup",
-    element: <Signup db={db} />,
+    element: <Signup />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));

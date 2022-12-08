@@ -1,13 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import reportWebVitals from "./reportWebVitals";
+import { ChakraProvider } from "@chakra-ui/react";
+import { Polybase } from "@polybase/client";
+
+const db = new Polybase({
+  baseURL: "https://testnet.polybase.xyz",
+});
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login db={db} />,
+  },
+  {
+    path: "/Signup",
+    element: <Signup db={db} />,
+  },
+]);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider>
+      <RouterProvider router={router} />
+    </ChakraProvider>
   </React.StrictMode>
 );
 
